@@ -12,4 +12,4 @@ PRs and issues are linked, so you can find more about it. Thanks to [ChangelogLi
 ## [v1.0.0] - 2024-05-29
 
 ### Changed
-- [#1] Adapts the original KnpLabs/DoctrineBehavior package for symfony support in versions higher than 6.2
+- [#1] Translations in symfony based in package KnpLabs/DoctrineBehavior

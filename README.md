@@ -5,19 +5,12 @@
 
 # Doctrine Behaviors
 
-This PHP library is a collection of traits and interfaces that add behaviors to Doctrine entities and repositories, 
-Contains modifications that were no longer maintained in the original package *[knplabs/doctrine-behaviors](https://github.com/KnpLabs/DoctrineBehaviors)*
+This PHP library is a collection of traits and interfaces that add behaviors translataions to Doctrine entities and repositories, 
+project based in package *[knplabs/doctrine-behaviors](https://github.com/KnpLabs/DoctrineBehaviors)*
 
 It currently handles:
 
-* [Blameable](/docs/blameable.md)
-* [Loggable](/docs/loggable.md)
-* [Sluggable](/docs/sluggable.md)
-* [SoftDeletable](/docs/soft-deletable.md)
-* [Uuidable](/docs/uuidable.md)
-* [Timestampable](/docs/timestampable.md)
 * [Translatable](/docs/translatable.md)
-* [Tree](/docs/tree.md)
 
 ## Install
 
@@ -31,24 +24,6 @@ All you have to do is to define a Doctrine entity:
 
 - implemented interface
 - add a trait
-
-For some behaviors like tree, you can use repository traits:
-
-```php
-<?php
-
-declare(strict_types=1);
-
-namespace App\Repository;
-
-use Doctrine\ORM\EntityRepository;
-use TeamQ\DoctrineBehaviors\ORM\Tree\TreeTrait;
-
-final class CategoryRepository extends EntityRepository
-{
-    use TreeTrait;
-}
-```
 
 Voilà!
 

@@ -3,11 +3,8 @@
 declare(strict_types=1);
 
 use TeamQ\DoctrineBehaviors\Contract\Provider\LocaleProviderInterface;
-use TeamQ\DoctrineBehaviors\Contract\Provider\UserProviderInterface;
-use TeamQ\DoctrineBehaviors\EventSubscriber\LoggableEventSubscriber;
 use TeamQ\DoctrineBehaviors\Tests\DatabaseLoader;
 use TeamQ\DoctrineBehaviors\Tests\Provider\TestLocaleProvider;
-use TeamQ\DoctrineBehaviors\Tests\Provider\TestUserProvider;
 use Psr\Log\Test\TestLogger;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
@@ -40,13 +37,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $services->set(TestLocaleProvider::class);
     $services->alias(LocaleProviderInterface::class, TestLocaleProvider::class);
 
-    $services->set(TestUserProvider::class);
-    $services->alias(UserProviderInterface::class, TestUserProvider::class);
-
     $services->set(DatabaseLoader::class);
-
-    $services->set(LoggableEventSubscriber::class)
-        ->arg('$logger', service(TestLogger::class));
 
     $containerConfigurator->extension('doctrine', [
         'dbal' => [

@@ -12,11 +12,12 @@ use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 final class DoctrineBehaviorsExtension extends Extension
 {
     /**
-     * @param array<array<mixed>> $configs
+     * @param array<array> $configs
+     * @throws \Exception
      */
-    public function load(array $configs, ContainerBuilder $containerBuilder): void
+    public function load(array $configs, ContainerBuilder $container): void
     {
-        $phpFileLoader = new PhpFileLoader($containerBuilder, new FileLocator(__DIR__ . '/../../../config'));
+        $phpFileLoader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../../config'));
         $phpFileLoader->load('services.php');
     }
 }

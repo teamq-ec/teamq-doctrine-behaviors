@@ -3,12 +3,11 @@
     "description": "Doctrine Behavior Traits",
     "type": "symfony-bundle",
     "keywords": [
-        "behaviors", "doctrine", "timestampable", "translatable", "blameable", "softdeletable", "tree", "uuid"
+        "behaviors", "doctrine", "translatable"
     ],
     "homepage": "https://teamq.biz",
     "license": "MIT",
     "authors": [
-        { "name": "Knplabs", "homepage": "https://knplabs.com" },
         { "name": "Ernesto Liberio", "homepage": "https://teamq.biz" }
     ],
     "require": {
