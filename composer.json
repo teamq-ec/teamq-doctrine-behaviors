@@ -1,6 +1,6 @@
 {
     "name": "teamq-ec/teamq-doctrine-behaviors",
-    "description": "Doctrine Behavior Traits",
+    "description": "Doctrine Behavior Traits for Symfony: Translatable",
     "type": "symfony-bundle",
     "keywords": [
         "behaviors", "doctrine", "translatable"
