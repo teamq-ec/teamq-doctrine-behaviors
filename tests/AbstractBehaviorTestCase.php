@@ -8,7 +8,6 @@ use Doctrine\DBAL\Logging\Middleware;
 use Doctrine\DBAL\Platforms\PostgreSQLPlatform;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Clock\NativeClock;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use TeamQ\DoctrineBehaviors\Tests\HttpKernel\DoctrineBehaviorsKernel;
 use TeamQ\DoctrineBehaviors\Tests\Logger\ArrayQueryLogger;
@@ -53,7 +52,7 @@ abstract class AbstractBehaviorTestCase extends TestCase
     protected function createAndRegisterQueryLogger(): ArrayQueryLogger
     {
         $queryLogger = new ArrayQueryLogger();
-        $middleware = new Middleware($queryLogger, new NativeClock());
+        $middleware = new Middleware($queryLogger);
 
         $this->entityManager->getConnection()
             ->getConfiguration()
