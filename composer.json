@@ -20,7 +20,7 @@
         "symfony/cache": "^5.4|^6.0|^7.0|^7.1|^7.2|^7.3",
         "symfony/dependency-injection": "^5.4|^6.0|^7.0|^7.1|^7.2|^7.3",
         "symfony/http-kernel": "^5.4|^6.0|^7.0|^7.1|^7.2|^7.3",
-        "symfony/security-bundle": "^7.2",
+        "symfony/security-bundle": "^5.4|^6.0|^7.0|^7.1|^7.2|^7.3",
         "symfony/framework-bundle": "^5.4|^6.0|^7.0|^7.1|^7.2|^7.3",
         "symfony/string": "^5.4|^6.0|^7.0|^7.1|^7.2|^7.3",
         "symfony/translation-contracts": "^2.4|^3.0",
