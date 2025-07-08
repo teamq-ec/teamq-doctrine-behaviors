@@ -5,9 +5,9 @@ declare(strict_types=1);
 use Rector\Config\RectorConfig;
 use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\Naming\Rector\Class_\RenamePropertyToMatchTypeRector;
+use Rector\Naming\Rector\ClassMethod\RenameParamToMatchTypeRector;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
-use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromAssignsRector;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([__DIR__ . '/src', __DIR__ . '/tests', __DIR__ . '/utils']);
@@ -16,7 +16,7 @@ return static function (RectorConfig $rectorConfig): void {
 
     $rectorConfig->skip([
         RenamePropertyToMatchTypeRector::class => [__DIR__ . '/tests/ORM/'],
-        TypedPropertyFromAssignsRector::class => [__DIR__ . '/tests/Repository/'],
+        RenameParamToMatchTypeRector::class => [__DIR__ . '/src/Bundle/DependencyInjection/'],
     ]);
 
     // doctrine annotations to attributes

@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace TeamQ\DoctrineBehaviors\Tests\HttpKernel;
 
 use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
-use TeamQ\DoctrineBehaviors\DoctrineBehaviorsBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symfony\Component\HttpKernel\Kernel;
+use TeamQ\DoctrineBehaviors\DoctrineBehaviorsBundle;
 
 final class DoctrineBehaviorsKernel extends Kernel
 {
