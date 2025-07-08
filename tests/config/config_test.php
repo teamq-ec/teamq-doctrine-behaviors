@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Psr\Log\Test\TestLogger;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use TeamQ\DoctrineBehaviors\Contract\Provider\LocaleProviderInterface;
@@ -28,7 +29,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->set(\Symfony\Bundle\SecurityBundle\SecurityBundle::class)
+    $services->set(SecurityBundle::class)
         ->arg('$container', service('service_container'));
 
     $services->set(TestLogger::class);

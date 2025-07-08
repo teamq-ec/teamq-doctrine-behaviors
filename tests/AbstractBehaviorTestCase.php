@@ -51,14 +51,14 @@ abstract class AbstractBehaviorTestCase extends TestCase
 
     protected function createAndRegisterQueryLogger(): ArrayQueryLogger
     {
-        $queryLogger = new ArrayQueryLogger();
-        $middleware = new Middleware($queryLogger);
+        $arrayQueryLogger = new ArrayQueryLogger();
+        $middleware = new Middleware($arrayQueryLogger);
 
         $this->entityManager->getConnection()
             ->getConfiguration()
             ->setMiddlewares([$middleware]);
 
-        return $queryLogger;
+        return $arrayQueryLogger;
     }
 
     /**
