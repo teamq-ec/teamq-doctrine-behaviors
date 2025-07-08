@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace TeamQ\DoctrineBehaviors\PHPStan\Type;
 
-use TeamQ\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
-use TeamQ\DoctrineBehaviors\Contract\Entity\TranslationInterface;
-use TeamQ\DoctrineBehaviors\PHPStan\Exception\PHPStanTypeException;
 use PhpParser\Node\Expr\MethodCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Reflection\ReflectionProvider;
 use ReflectionClass;
+use TeamQ\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
+use TeamQ\DoctrineBehaviors\Contract\Entity\TranslationInterface;
+use TeamQ\DoctrineBehaviors\PHPStan\Exception\PHPStanTypeException;
 
 final class StaticTranslationTypeHelper
 {

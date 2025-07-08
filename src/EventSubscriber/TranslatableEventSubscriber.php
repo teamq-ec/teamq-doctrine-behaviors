@@ -29,10 +29,9 @@ final class TranslatableEventSubscriber
 
     public function __construct(
         private LocaleProviderInterface $localeProvider,
-        string                                   $translatableFetchMode,
-        string                                   $translationFetchMode
-    )
-    {
+        string $translatableFetchMode,
+        string $translationFetchMode
+    ) {
         $this->translatableFetchMode = $this->convertFetchString($translatableFetchMode);
         $this->translationFetchMode = $this->convertFetchString($translationFetchMode);
     }
@@ -43,7 +42,7 @@ final class TranslatableEventSubscriber
     public function loadClassMetadata(LoadClassMetadataEventArgs $loadClassMetadataEventArgs): void
     {
         $classMetadata = $loadClassMetadataEventArgs->getClassMetadata();
-        if (!$classMetadata->reflClass instanceof ReflectionClass) {
+        if (! $classMetadata->reflClass instanceof ReflectionClass) {
             // Class has not yet been fully built, ignore this event
             return;
         }
@@ -112,7 +111,7 @@ final class TranslatableEventSubscriber
 
     private function mapTranslation(ClassMetadata $classMetadata, ObjectManager $objectManager): void
     {
-        if (!$classMetadata->hasAssociation('translatable')) {
+        if (! $classMetadata->hasAssociation('translatable')) {
             $targetEntity = $classMetadata->getReflectionClass()
                 ->getMethod('getTranslatableEntityClass')
                 ->invoke(null);
@@ -137,14 +136,14 @@ final class TranslatableEventSubscriber
         }
 
         $name = $classMetadata->getTableName() . '_unique_translation';
-        if (!$this->hasUniqueTranslationConstraint($classMetadata, $name) &&
+        if (! $this->hasUniqueTranslationConstraint($classMetadata, $name) &&
             $classMetadata->getName() === $classMetadata->rootEntityName) {
             $classMetadata->table['uniqueConstraints'][$name] = [
                 'columns' => ['translatable_id', self::LOCALE],
             ];
         }
 
-        if (!$classMetadata->hasField(self::LOCALE) && !$classMetadata->hasAssociation(self::LOCALE)) {
+        if (! $classMetadata->hasField(self::LOCALE) && ! $classMetadata->hasAssociation(self::LOCALE)) {
             $classMetadata->mapField([
                 'fieldName' => self::LOCALE,
                 'type' => 'string',
@@ -156,7 +155,7 @@ final class TranslatableEventSubscriber
     private function setLocales(PostLoadEventArgs|PrePersistEventArgs $lifecycleEventArgs): void
     {
         $object = $lifecycleEventArgs->getObject();
-        if (!$object instanceof TranslatableInterface) {
+        if (! $object instanceof TranslatableInterface) {
             return;
         }
 
