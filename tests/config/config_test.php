@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Psr\Log\Test\TestLogger;
+use Symfony\Bundle\SecurityBundle\SecurityBundle;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use TeamQ\DoctrineBehaviors\Contract\Provider\LocaleProviderInterface;
 use TeamQ\DoctrineBehaviors\Tests\DatabaseLoader;
