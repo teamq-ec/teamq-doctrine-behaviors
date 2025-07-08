@@ -5,19 +5,18 @@ declare(strict_types=1);
 namespace TeamQ\DoctrineBehaviors\Tests;
 
 use Doctrine\DBAL\Connection;
-use Doctrine\DBAL\Logging\DebugStack;
-use Doctrine\DBAL\Platforms\PostgreSQL94Platform;
+use Doctrine\DBAL\Logging\Middleware;
+use Doctrine\DBAL\Platforms\PostgreSQLPlatform;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Clock\NativeClock;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use TeamQ\DoctrineBehaviors\Tests\HttpKernel\DoctrineBehaviorsKernel;
+use TeamQ\DoctrineBehaviors\Tests\Logger\ArrayQueryLogger;
 
 abstract class AbstractBehaviorTestCase extends TestCase
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    protected $entityManager;
+    protected EntityManagerInterface $entityManager;
 
     private ContainerInterface $container;
 
@@ -34,17 +33,14 @@ abstract class AbstractBehaviorTestCase extends TestCase
 
     protected function loadDatabaseFixtures(): void
     {
-        /** @var DatabaseLoader $databaseLoader */
         $databaseLoader = $this->getService(DatabaseLoader::class);
         $databaseLoader->reload();
     }
 
     protected function isPostgreSql(): bool
     {
-        /** @var Connection $connection */
         $connection = $this->entityManager->getConnection();
-
-        return $connection->getDatabasePlatform() instanceof PostgreSQL94Platform;
+        return $connection->getDatabasePlatform() instanceof PostgreSQLPlatform;
     }
 
     /**
@@ -55,15 +51,16 @@ abstract class AbstractBehaviorTestCase extends TestCase
         return [];
     }
 
-    protected function createAndRegisterDebugStack(): DebugStack
+    protected function createAndRegisterQueryLogger(): ArrayQueryLogger
     {
-        $debugStack = new DebugStack();
+        $queryLogger = new ArrayQueryLogger();
+        $middleware = new Middleware($queryLogger, new NativeClock());
 
         $this->entityManager->getConnection()
             ->getConfiguration()
-            ->setSQLLogger($debugStack);
+            ->setMiddlewares([$middleware]);
 
-        return $debugStack;
+        return $queryLogger;
     }
 
     /**

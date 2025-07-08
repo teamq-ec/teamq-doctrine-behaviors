@@ -60,7 +60,7 @@
     "scripts": {
         "check-cs": "vendor/bin/ecs check --ansi",
         "fix-cs": "vendor/bin/ecs check --fix --ansi",
-        "phpstan": "vendor/bin/phpstan analyse --ansi --error-format symplify"
+        "phpstan": "php -d memory_limit=1G vendor/bin/phpstan analyse src tests --ansi --error-format=symplify"
     },
     "config": {
         "allow-plugins": {
