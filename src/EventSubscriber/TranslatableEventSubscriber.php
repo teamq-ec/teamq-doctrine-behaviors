@@ -28,7 +28,7 @@ final class TranslatableEventSubscriber
     private int $translationFetchMode;
 
     public function __construct(
-        private readonly LocaleProviderInterface $localeProvider,
+        private LocaleProviderInterface $localeProvider,
         string                                   $translatableFetchMode,
         string                                   $translationFetchMode
     )
