@@ -21,10 +21,7 @@ use TeamQ\DoctrineBehaviors\Contract\Provider\LocaleProviderInterface;
 #[AsDoctrineListener(event: Events::prePersist)]
 final class TranslatableEventSubscriber
 {
-    /**
-     * @var string
-     */
-    public const string LOCALE = 'locale';
+    public const LOCALE = 'locale';
 
     private int $translatableFetchMode;
 
