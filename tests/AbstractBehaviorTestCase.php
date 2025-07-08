@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace TeamQ\DoctrineBehaviors\Tests;
 
-use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Logging\Middleware;
 use Doctrine\DBAL\Platforms\PostgreSQLPlatform;
 use Doctrine\ORM\EntityManagerInterface;
