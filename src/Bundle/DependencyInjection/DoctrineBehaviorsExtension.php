@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TeamQ\DoctrineBehaviors\Bundle\DependencyInjection;
 
+use Exception;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -13,9 +14,9 @@ final class DoctrineBehaviorsExtension extends Extension
 {
     /**
      * @param array<array> $configs
-     * @throws \Exception
+     * @throws Exception
      */
-    public function load(array $configs, ContainerBuilder $container):void
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $phpFileLoader = new PhpFileLoader($container, new FileLocator(__DIR__ . '/../../../config'));
         $phpFileLoader->load('services.php');
