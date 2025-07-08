@@ -14,9 +14,9 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            -   uses: actions/checkout@v4
+            -   uses: actions/checkout@v2
 
-            -   uses: shivammathur/setup-php@v2
+            -   uses: shivammathur/setup-php@v1
                 with:
                     php-version: ${{ matrix.php }}
                     extensions: pdo_sqlite, pdo_mysql, pdo_pgsql
